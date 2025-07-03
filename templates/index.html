@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 助手</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <!-- 1. 引入 HTMX -->
+    <script src="https://unpkg.com/htmx.org@1.9.10"
+        integrity="sha384-D1Kt99CQMDuVetoL1lrYwg5t+9QdHe7NLX/SoJYkXDFfX37iInKRy5xLSi8nO7UC"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <main class="container">
+        <nav>
+            <ul>
+                <li><strong>AI 助手</strong></li>
+            </ul>
+        </nav>
+
+        <h1>与 AI 对话</h1>
+
+        <!-- 2. 修改表单，添加 HTMX 属性 -->
+        <form hx-post="/ask" hx-target="#response-container" hx-swap="innerHTML" hx-indicator="#loading-indicator">
+
+            <label for="prompt">你的问题：</label>
+            <textarea id="prompt" name="prompt" required></textarea>
+            <button type="submit">发送</button>
+
+            <!-- 加载提示（HTMX 控制显示） -->
+            <div id="loading-indicator" class="htmx-indicator" style="display:none;">
+            ⏳ 正在思考中...
+            </div>
+        </form>
+        <style>
+            /* 兼容 Edge 浏览器的 HTMX 加载指示器显示 */
+            .htmx-request .htmx-indicator,
+            .htmx-request.htmx-indicator {
+            display: block !important;
+            }
+        </style>
+
+
+        <hr>
+
+        <h2>AI 的回复：</h2>
+        <!-- 3. 这里是 HTMX 将要替换内容的目标 -->
+        <article id="response-container">
+            <p>我能怎么帮助你？</p>
+        </article>
+    </main>
+</body>
+
+</html>

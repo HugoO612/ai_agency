@@ -1,0 +1,9 @@
+services:
+  - type: web
+    name: flask-ai-assistant
+    env: python
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: FLOW_API
+        value: sk-nfmiwbfsxyghfcpvngrxtawchyuxrrqzkdpzuhwqvdhsyhva
