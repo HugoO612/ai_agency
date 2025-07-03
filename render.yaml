@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: flask-ai-assistant
+    name: ai_agency
     env: python
     buildCommand: ""
     startCommand: python app.py
