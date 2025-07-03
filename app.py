@@ -51,4 +51,5 @@ def ask():
         return "<article><p>抱歉，AI 回复解析失败。</p></article>"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 5000))  # 读取环境变量PORT，没设置就用5000
+    app.run(host='0.0.0.0', port=port, debug=True)
